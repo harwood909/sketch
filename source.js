@@ -13,6 +13,7 @@ const r = document.querySelector(`:root`);
 const btn = document.querySelector(`.btn-grid-size-popup`);
 const pixel = document.createElement(`div`);
 const grid = document.querySelector(`#sketch-space`);
+const pixelElement = grid.querySelector(`pixel`);
 btn.addEventListener(`click`,()=> changeGridSize());
 
 function changeGridSize(){
@@ -27,5 +28,9 @@ function changeGridSize(){
 
 function gridSizeModal(){
 gridXYValue = prompt(`Enter a number, 1 to 50`,20);
-console.log(gridXYValue);
+if(gridCount!=0){
+    while (grid.firstChild) {
+        grid.removeChild(grid.firstChild);
+      }
+}
 }
