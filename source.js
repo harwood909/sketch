@@ -1,19 +1,13 @@
-/* const pixelNodeList = document.querySelectorAll(`div.pixel`)
-const pixelNode = document.querySelector(`div.pixel`)
-console.log(pixelNodeList)
-pixelNodeArray = Array.from(pixelNodeList)
-console.log(pixelNodeArray)
-pixelNodeArray.forEach((pixelNode) => {
-    pixelNode.setAttribute(`style`, `height: 10px, width: 10px, background: black, color: blue`)
-    
-}); */
+
 let gridXYValue = 0;
 let gridCount = 0;
-const r = document.querySelector(`:root`);
-const btn = document.querySelector(`.btn-grid-size-popup`);
 const pixel = document.createElement(`div`);
+const r = document.querySelector(`:root`);
+const pixelHSLLightness = 100;
+console.log(pixelHSLLightness);
+const btn = document.querySelector(`.btn-grid-size-popup`);
 const grid = document.querySelector(`#sketch-space`);
-const pixelElement = grid.querySelector(`pixel`);
+
 btn.addEventListener(`click`,()=> changeGridSize());
 
 function changeGridSize(){
@@ -22,15 +16,24 @@ function changeGridSize(){
     r.style.setProperty(`--grid-column-row-count`, gridXYValue);
     pixel.classList.add(`pixel`);
     for(i=0;i<gridCount;i++){
-    grid.appendChild(pixel.cloneNode(true));
+        grid.appendChild(pixel.cloneNode(true));
     }
+    //const pixelElement = document.querySelector(`.pixel`);
+    grid.addEventListener(`mouseover`,(e)=>changePixelAttribute(e));
 }
 
 function gridSizeModal(){
-gridXYValue = prompt(`Enter a number, 1 to 50`,20);
-if(gridCount!=0){
-    while (grid.firstChild) {
-        grid.removeChild(grid.firstChild);
-      }
+    gridXYValue = prompt(`Enter a number, 1 to 50`,20);
+    if(gridCount!=0){
+        while (grid.firstChild) {
+            grid.removeChild(grid.firstChild);
+        }
+    }
 }
+
+function changePixelAttribute(e){    
+    let darkPixel = pixelHSLLightness-10;
+    console.log(darkPixel);
+    e.target.style.backgroundColor=`hsl(0,0%,${darkPixel}%)`;
+    
 }

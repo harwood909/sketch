@@ -2,6 +2,7 @@
     --grid-column-row-count: 5;
     --pixel-size: 10px;
     --sketchpad-size: 500px;
+    --pixel-hsl-lightness: 100%;
 }
 
 #sketch-space{
@@ -14,9 +15,8 @@
 }
 
 .pixel{
-/*     display: flex;
- */    background-color: aqua;
-    color: red;
+    background-color: hsl(0, 0%, var(--pixel-hsl-lightness));
+    color: rgb(255, 0, 0);
     border: 1px blue solid;
 
 } 
