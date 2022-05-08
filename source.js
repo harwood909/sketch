@@ -34,6 +34,20 @@ function gridSizeModal(){
 function changePixelAttribute(e){    
     let darkPixel = pixelHSLLightness-10;
     console.log(darkPixel);
-    e.target.style.backgroundColor=`hsl(0,0%,${darkPixel}%)`;
-    
+    e.target.style.backgroundColor=`hsl(0,0%,${darkPixel}%)`;    
+}
+
+function randomHSL(){
+    let hue = randomHSLHue();
+    let sat = Math.round(Math.random()*100)
+    let light = Math.round(Math.random()*100)
+    let randomHSL = `hsl(${hue},${sat}%,${light}%)`
+}
+
+function randomHSLHue(){
+    let hue = 361
+    while(hue>360){
+        hue = Math.round(Math.random()*100)
+    }
+    return hue;
 }
