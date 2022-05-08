@@ -1,6 +1,7 @@
 
 let gridXYValue = 0;
 let gridCount = 0;
+let pixelStyle = `random`;
 const pixel = document.createElement(`div`);
 const r = document.querySelector(`:root`);
 const pixelHSLLightness = 100;
@@ -18,7 +19,6 @@ function changeGridSize(){
     for(i=0;i<gridCount;i++){
         grid.appendChild(pixel.cloneNode(true));
     }
-    //const pixelElement = document.querySelector(`.pixel`);
     grid.addEventListener(`mouseover`,(e)=>changePixelAttribute(e));
 }
 
@@ -31,10 +31,14 @@ function gridSizeModal(){
     }
 }
 
-function changePixelAttribute(e){    
-    let darkPixel = pixelHSLLightness-10;
-    console.log(darkPixel);
-    e.target.style.backgroundColor=`hsl(0,0%,${darkPixel}%)`;    
+function changePixelAttribute(e){   
+    if(pixelStyle===`random`){ 
+        e.target.style.backgroundColor=randomHSL();
+    }
+    else{
+        let darkPixel = pixelHSLLightness-10;
+        e.target.style.backgroundColor=`hsl(0,0%,${darkPixel}%)`;
+    } 
 }
 
 function randomHSL(){
@@ -42,6 +46,7 @@ function randomHSL(){
     let sat = Math.round(Math.random()*100)
     let light = Math.round(Math.random()*100)
     let randomHSL = `hsl(${hue},${sat}%,${light}%)`
+    return randomHSL;
 }
 
 function randomHSLHue(){
