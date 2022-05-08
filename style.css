@@ -1,7 +1,7 @@
 :root{
     --grid-column-row-count: 5;
     --pixel-size: 10px;
-    --sketchpad-size: 500px;
+    --sketchpad-size: 960px;
     --pixel-hsl-lightness: 100%;
 }
 
